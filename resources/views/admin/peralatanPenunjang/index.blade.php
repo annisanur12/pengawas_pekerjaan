@@ -26,7 +26,7 @@
                         <ol class="breadcrumb text-right">
                             <li><a href="#">Dashboard</a></li>
                             <li><a href="#">Table</a></li>
-                            <li class="active">Data Pengawasan</li>
+                            <li class="active">Peralatan Penunjang</li>
                         </ol>
                     </div>
                 </div>
@@ -48,27 +48,23 @@
                             
                             <div class="card-header">
                                 <strong class="card-title">{{$pagename}}</strong>
-                                <a href="{{route('pengawasan.create')}}" class="btn btn-primary pull-right">Tambah</a>
+                                <a href="{{route('peralatanPenunjang.create')}}" class="btn btn-primary pull-right">Tambah</a>
                             </div>
                             <div class="card-body">
                                 <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Pekerjaan</th>
-                                            <th>Pelaksana Pekerjaan</th>
-                                            <th>No Kontrak</th>
-                                            <th>Tanggal Pekerjaan</th>
-                                            <th>Lokasi Pekerjaan</th>
-                                            <th>Pengawas PLN</th>
-                                            <th>Pengawas Vendor</th>
-                                            <th>Jumlah Petugas Pelaksana</th>
-                                            <th>SOP</th>
-                                            <th>IBPR</th>
-                                            <th>JSA</th>
-                                            <th>Working Permit</th>
-                                            <th>Arahan Pekerja</th>
-                                            <th>Cek Komunikasi</th>
+                                            <th>Grounding Appartus TR</th>
+                                            <th>Grounding Appartus TM</th>
+                                            <th>Voltage Detector</th>
+                                            <th>Lock Out Tag Out(LOTO)</th>
+                                            <th>Papan Peringatan</th>
+                                            <th>Traffic Cone</th>
+                                            <th>P3K</th>
+                                            <th>Jas Hujan</th>
+                                            <th>Tali Tangga</th>
+                                            <th>Id Pengawasan</th>
                                             <th>Edit</th>
                                             <th>Hapus</th>
                                         </tr>
@@ -78,22 +74,18 @@
                                         @foreach($data as $i=>$row)
                                         <tr>
                                             <td>{{++$i}}</td>
-                                            <td>{{$row->pekerjaan}}</td>
-                                            <td>{{$row->pelaksana_pekerjaan}}</td>
-                                            <td>{{$row->no_kontrak}}</td>
-                                            <td>{{$row->tanggal_pekerjaan}}</td>
-                                            <td>{{$row->lokasi_pekerjaan}}</td>
-                                            <td>{{$row->pengawas_pln}}</td>
-                                            <td>{{$row->pengawas_vendor}}</td>
-                                            <td>{{$row->jml_petugas_pelaksana}}</td>
-                                            <td>{{$row->sop}}</td>
-                                            <td>{{$row->IBPR}}</td>
-                                            <td>{{$row->JSA}}</td>
-                                            <td>{{$row->working_permit}}</td>
-                                            <td>{{$row->arahan_pekerja}}</td>
-                                            <td>{{$row->cek_komunikasi}}</td>
-                                            <td><a href="{{route('pengawasan.edit',$row->id)}}" class="btn btn-primary">Edit</a></td><td>
-                                                <form action="{{route('pengawasan.destroy', $row->id)}}" method="post">
+                                            <td>{{$row->Grounding_Appartus_TR}}</td>
+                                            <td>{{$row->Grounding_Appartus_TM}}</td>
+                                            <td>{{$row->Voltage_Detector}}</td>
+                                            <td>{{$row->LOTO}}</td>
+                                            <td>{{$row->papan_peringatan}}</td>
+                                            <td>{{$row->traffic_cone}}</td>
+                                            <td>{{$row->p3k}}</td>
+                                            <td>{{$row->jas_hujan}}</td>
+                                            <td>{{$row->tali_tangga}}</td>
+                                            <td>{{$row->id_pengawasan}}</td>
+                                            <td><a href="{{route('peralatanPenunjang.edit',$row->id)}}" class="btn btn-primary">Edit</a></td><td>
+                                                <form action="{{route('peralatanPenunjang.destroy', $row->id)}}" method="post">
                                                 @csrf
                                                 @method('DELETE')
                                                     <button class="btn btn-danger" type="submit">Hapus</button>
