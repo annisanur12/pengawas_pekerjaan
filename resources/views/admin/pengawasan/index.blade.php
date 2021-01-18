@@ -69,6 +69,8 @@
                                             <th>Working Permit</th>
                                             <th>Arahan Pekerja</th>
                                             <th>Cek Komunikasi</th>
+                                            <th>Edit</th>
+                                            <th>Hapus</th>
                                         </tr>
                                     </thead>
                                     <tbody>

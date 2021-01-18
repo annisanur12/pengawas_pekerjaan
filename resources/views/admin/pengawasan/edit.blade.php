@@ -59,21 +59,22 @@
                                         <strong>{{$pagename}}</strong> 
                                     </div>
                                     <div class="card-body card-block">
-                                        <form action="{{route('pengawasan.store')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                        <form action="{{route('pengawasan.update', $data->id)}}" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                            @method('PATCH')
                                             @csrf
                                             <div class="row form-group">
                                                 <div class="col col-md-3"><label for="text-input" class=" form-control-label">Pekerjaan</label></div>
-                                                <div class="col-12 col-md-9"><input type="text" id="text-input" name="textpekerjaan" placeholder="masukkan Pekerjaan" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
+                                                <div class="col-12 col-md-9"><input type="text" id="text-input" name="textpekerjaan" value="{{$data->pekerjaan}}" placeholder="masukkan Pekerjaan" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
                                             </div>
                                             
                                             <div class="row form-group">
                                                 <div class="col col-md-3"><label for="text-input" class=" form-control-label">Pelaksana Pekerjaan</label></div>
-                                                <div class="col-12 col-md-9"><input type="text" id="text-input" name="textpelaksana_pekerjaan" placeholder="masukkan pelaksana pekerjaan" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
+                                                <div class="col-12 col-md-9"><input type="text" id="text-input" name="textpelaksana_pekerjaan" value="{{$data->pelaksana_pekerjaan}}" placeholder="masukkan pelaksana pekerjaan" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
                                             </div>
 
                                             <div class="row form-group">
                                                 <div class="col col-md-3"><label for="text-input" class=" form-control-label">Nomor Kontrak</label></div>
-                                                <div class="col-12 col-md-9"><input type="text" id="text-input" name="textno_kontrak" placeholder="masukkan nomer kontrak" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
+                                                <div class="col-12 col-md-9"><input type="text" id="text-input" name="textno_kontrak" value="{{$data->no_kontrak}}" placeholder="masukkan nomer kontrak" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
                                             </div>
 
                                             <div class="row form-group">
@@ -81,7 +82,7 @@
                                                 <div class="col-12 col-md-9"> 
                                                     <div class="input-group">
                                                         <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-                                                            <input type="text" class="form-control" id="date-input" name="texttanggal_pekerjaan">
+                                                            <input type="text" class="form-control" id="date-input" name="texttanggal_pekerjaan" value="{{$data->tanggal_pekerjaan}}">
                                                     </div>
                                                     <small class="form-text text-muted">ex. 9999/99/9</small>
                                                 </div>        
@@ -89,22 +90,22 @@
 
                                             <div class="row form-group">
                                                 <div class="col col-md-3"><label for="text-input" class=" form-control-label">Lokasi Pekerjaan</label></div>
-                                                <div class="col-12 col-md-9"><input type="text" id="text-input" name="textlokasi_pekerjaan" placeholder="masukkan lokasi pekerjaan" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
+                                                <div class="col-12 col-md-9"><input type="text" id="text-input" name="textlokasi_pekerjaan" value="{{$data->lokasi_pekerjaan}}" placeholder="masukkan lokasi pekerjaan" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
                                             </div>
 
                                             <div class="row form-group">
                                                 <div class="col col-md-3"><label for="text-input" class=" form-control-label">Pengawas PLN</label></div>
-                                                <div class="col-12 col-md-9"><input type="text" id="text-input" name="textpengawas_pln" placeholder="masukkan pengawas pln" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
+                                                <div class="col-12 col-md-9"><input type="text" id="text-input" name="textpengawas_pln" value="{{$data->pengawas_pln}}" placeholder="masukkan pengawas pln" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
                                             </div>
 
                                             <div class="row form-group">
                                                 <div class="col col-md-3"><label for="text-input" class=" form-control-label">Pengawas Vendor</label></div>
-                                                <div class="col-12 col-md-9"><input type="text" id="text-input" name="textpengawas_vendor" placeholder="masukkan pengawas vendor" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
+                                                <div class="col-12 col-md-9"><input type="text" id="text-input" name="textpengawas_vendor" value="{{$data->pengawas_vendor}} placeholder="masukkan pengawas vendor" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
                                             </div>
                                                
                                             <div class="row form-group">
                                                 <div class="col col-md-3"><label for="text-input" class=" form-control-label">Jumlah Petugas Pelaksana</label></div>
-                                                <div class="col-12 col-md-9"><input type="text" id="text-input" name="textjml_petugas_pelaksana" placeholder="masukkan jumlah petugas pelaksana" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
+                                                <div class="col-12 col-md-9"><input type="text" id="text-input" name="textjml_petugas_pelaksana" value="{{$data->jml_petugas_pelaksana}}" placeholder="masukkan jumlah petugas pelaksana" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
                                             </div>
 
                                             <div class="row form-group">
@@ -112,10 +113,10 @@
                                                     <div class="col col-md-9">
                                                         <div class="form-check-inline form-check">
                                                             <label for="inline-radio1" class="form-check-label ">
-                                                                <input type="radio" id="inline-radio1" name="radiosop" value="1" class="form-check-input">Ada
+                                                                <input type="radio" id="inline-radio1" name="radiosop" value="1" {{$data->sop==1?'checked':''}} class="form-check-input">Ada
                                                             </label>
                                                             <label for="inline-radio2" class="form-check-label ">
-                                                                <input type="radio" id="inline-radio2" name="radiosop" value="0" class="form-check-input">Tidak Ada
+                                                                <input type="radio" id="inline-radio2" name="radiosop" value="0" {{$data->sop==0?'checked':''}} class="form-check-input">Tidak Ada
                                                             </label>
                                                             
                                                         </div>
@@ -127,10 +128,10 @@
                                                     <div class="col col-md-9">
                                                         <div class="form-check-inline form-check">
                                                             <label for="inline-radio1" class="form-check-label ">
-                                                                <input type="radio" id="inline-radio1" name="radioIBPR" value="1" class="form-check-input">Ada
+                                                                <input type="radio" id="inline-radio1" name="radioIBPR" value="1" {{$data->IBPR==1?'checked':''}} class="form-check-input">Ada
                                                             </label>
                                                             <label for="inline-radio2" class="form-check-label ">
-                                                                <input type="radio" id="inline-radio2" name="radioIBPR" value="0" class="form-check-input">Tidak Ada
+                                                                <input type="radio" id="inline-radio2" name="radioIBPR" value="0" {{$data->IBPR==0?'checked':''}} class="form-check-input">Tidak Ada
                                                             </label>
                                                             
                                                         </div>
@@ -139,12 +140,12 @@
 
                                             <div class="row form-group">
                                                 <div class="col col-md-3"><label for="text-input" class=" form-control-label">JSA</label></div>
-                                                <div class="col-12 col-md-9"><input type="text" id="text-input" name="textJSA" placeholder="masukkan JSA" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
+                                                <div class="col-12 col-md-9"><input type="text" id="text-input" name="textJSA" value="{{$data->JSA}}" placeholder="masukkan JSA" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
                                             </div>
                                                
                                             <div class="row form-group">
                                                 <div class="col col-md-3"><label for="text-input" class=" form-control-label">Working Permit</label></div>
-                                                <div class="col-12 col-md-9"><input type="text" id="text-input" name="textworking_permit" placeholder="masukkan working permit" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
+                                                <div class="col-12 col-md-9"><input type="text" id="text-input" name="textworking_permit" value="{{$data->working_permit}}" placeholder="masukkan working permit" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
                                             </div>
 
                                             <div class="row form-group">
@@ -152,10 +153,10 @@
                                                     <div class="col col-md-9">
                                                         <div class="form-check-inline form-check">
                                                             <label for="inline-radio1" class="form-check-label ">
-                                                                <input type="radio" id="inline-radio1" name="radioarahan_pekerja" value="1" class="form-check-input">Ada
+                                                                <input type="radio" id="inline-radio1" name="radioarahan_pekerja" value="1" {{$data->arahan_pekerjaan==1?'checked':''}} class="form-check-input">Ada
                                                             </label>
                                                             <label for="inline-radio2" class="form-check-label ">
-                                                                <input type="radio" id="inline-radio2" name="radioarahan_pekerja" value="0" class="form-check-input">Tidak Ada
+                                                                <input type="radio" id="inline-radio2" name="radioarahan_pekerja" value="0" {{$data->arahan_pekerjaan==0?'checked':''}} class="form-check-input">Tidak Ada
                                                             </label>
                                                             
                                                         </div>
@@ -167,25 +168,21 @@
                                                     <div class="col col-md-9">
                                                         <div class="form-check-inline form-check">
                                                             <label for="inline-radio1" class="form-check-label ">
-                                                                <input type="radio" id="inline-radio1" name="radiocek_komunikasi" value="1" class="form-check-input">Ada
+                                                                <input type="radio" id="inline-radio1" name="radiocek_komunikasi" value="1" {{$data->cek_komunikasi==1?'checked':''}} class="form-check-input">Ada
                                                             </label>
                                                             <label for="inline-radio2" class="form-check-label ">
-                                                                <input type="radio" id="inline-radio2" name="radiocek_komunikasi" value="0" class="form-check-input">Tidak Ada
+                                                                <input type="radio" id="inline-radio2" name="radiocek_komunikasi" value="0" {{$data->cek_komunikasi==0?'checked':''}} class="form-check-input">Tidak Ada
                                                             </label>
                                                             
                                                         </div>
                                                     </div>
                                             </div>
 
-
-                                                
                                         
                                         <button type="submit" class="btn btn-primary btn-sm">
-                                            <i class="fa fa-dot-circle-o"></i> Simpan
+                                            <i class="fa fa-dot-circle-o"></i> Update
                                         </button>
-                                        <button type="reset" class="btn btn-danger btn-sm">
-                                            <i class="fa fa-ban"></i> Reset
-                                        </button>     
+                                        
                                     </form>
                                     </div>
                                 

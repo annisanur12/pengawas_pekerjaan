@@ -23,12 +23,12 @@ class CreatePengawasansTable extends Migration
             $table->string('pengawas_pln');
             $table->string('pengawas_vendor');
             $table->integer('jml_petugas_pelaksana');
-            $table->integer('sop');
-            $table->integer('IBPR');
+            $table->boolean('sop');
+            $table->boolean('IBPR');
             $table->string('JSA');
             $table->string('working_permit');
-            $table->integer('arahan_pekerja');
-            $table->integer('cek_komunikasi');
+            $table->boolean('arahan_pekerja');
+            $table->boolean('cek_komunikasi');
             $table->timestamps();
         });
     }

@@ -52,12 +52,9 @@ class PengawasanController extends Controller
             'textpengawas_pln'=>'required',
             'textpengawas_vendor'=>'required',
             'textjml_petugas_pelaksana'=>'required',
-            'textsop'=>'required',
-            'textIBPR'=>'required',
             'textJSA'=>'required',
             'textworking_permit'=>'required',
-            'textarahan_pekerja'=>'required',
-            'textcek_komunikasi'=>'required',
+            
             
         ]);
 
@@ -69,17 +66,17 @@ class PengawasanController extends Controller
             'lokasi_pekerjaan'=> $request->get('textlokasi_pekerjaan'),
             'pengawas_pln'=> $request->get('textpengawas_pln'),
             'pengawas_vendor'=> $request->get('textpengawas_vendor'),
-            'jml_petugas_pelaksanan'=> $request->get('textjml_petugas_pelaksana'),
-            'sop'=> $request->get('textssop'),
-            'IBPR'=> $request->get('textIBPR'),
+            'jml_petugas_pelaksana'=> $request->get('textjml_petugas_pelaksana'),
+            'sop'=> $request->get('radiosop'),
+            'IBPR'=> $request->get('radioIBPR'),
             'JSA'=> $request->get('textJSA'),
             'working_permit'=> $request->get('textworking_permit'),
-            'arahan_pekerja'=> $request->get('textarahan_pekerja'),
-            'cek_komunikasi'=> $request->get('textcek_komunikasi'),
+            'arahan_pekerja'=> $request->get('radioarahan_pekerja'),
+            'cek_komunikasi'=> $request->get('radiocek_komunikasi'),
         ]);
 
         $data_pengawasan->save();
-        return redirect('admin/pengawasan')->with('sukses','akun berhasil disimpan');
+        return redirect('admin/pengawasan')->with('sukses','Info Pengawasan berhasil disimpan');
     }
 
     /**
@@ -102,6 +99,10 @@ class PengawasanController extends Controller
     public function edit($id)
     {
         //
+        $data_pengawasan=Pengawasan::all();
+        $pagename='Update Pengawasan';
+        $data=Pengawasan::find($id);
+        return view ('admin.pengawasan.edit', compact('data','pagename','data_pengawasan'));
     }
 
     /**
@@ -114,6 +115,41 @@ class PengawasanController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $request->validate([
+            'textpekerjaan'=>'required',
+            'textpelaksana_pekerjaan'=>'required',
+            'textno_kontrak'=>'required',
+            'texttanggal_pekerjaan'=>'required',
+            'textlokasi_pekerjaan'=>'required',
+            'textpengawas_pln'=>'required',
+            'textpengawas_vendor'=>'required',
+            'textjml_petugas_pelaksana'=>'required',
+            'textJSA'=>'required',
+            'textworking_permit'=>'required',
+            
+            
+        ]);
+
+        $pengawasan=Pengawasan::find($id);
+
+            $pengawasan->pekerjaan=$request->get('textpekerjaan');
+            $pengawasan->pelaksana_pekerjaan=$request->get('textpelaksana_pekerjaan');
+            $pengawasan->no_kontrak= $request->get('textno_kontrak');
+            $pengawasan->tanggal_pekerjaan=$request->get('texttanggal_pekerjaan');
+            $pengawasan->lokasi_pekerjaan= $request->get('textlokasi_pekerjaan');
+            $pengawasan->pengawas_pln= $request->get('textpengawas_pln');
+            $pengawasan->pengawas_vendor= $request->get('textpengawas_vendor');
+            $pengawasan->jml_petugas_pelaksana= $request->get('textjml_petugas_pelaksana');
+            $pengawasan->sop= $request->get('radiosop');
+            $pengawasan->IBPR= $request->get('radioIBPR');
+            $pengawasan->JSA= $request->get('textJSA');
+            $pengawasan->working_permit= $request->get('textworking_permit');
+            $pengawasan->arahan_pekerja= $request->get('radioarahan_pekerja');
+            $pengawasan->cek_komunikasi= $request->get('radiocek_komunikasi');
+        
+
+        $pengawasan->save();
+        return redirect('admin/pengawasan')->with('sukses','Update Pengawasan berhasil disimpan');
     }
 
     /**
@@ -125,5 +161,9 @@ class PengawasanController extends Controller
     public function destroy($id)
     {
         //
+        $pengawasan=Pengawasan::find($id);
+
+        $pengawasan->delete();
+        return redirect('admin/pengawasan')->with('sukses','Form Pengawasan berhasil dihapus');
     }
 }
