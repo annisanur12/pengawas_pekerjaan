@@ -45,7 +45,7 @@
                                 {{session()->get('sukses')}}
                             </div>
                             @endif
-
+                            
                             <div class="card-header">
                                 <strong class="card-title">{{$pagename}}</strong>
                                 <a href="{{route('pengawasan.create')}}" class="btn btn-primary pull-right">Tambah</a>
@@ -69,8 +69,6 @@
                                             <th>Working Permit</th>
                                             <th>Arahan Pekerja</th>
                                             <th>Cek Komunikasi</th>
-                                            <th>Edit</th>
-                                            <th>Hapus</th>
                                         </tr>
                                     </thead>
                                     <tbody>

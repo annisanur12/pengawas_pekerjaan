@@ -29,6 +29,9 @@ class PengawasanController extends Controller
     public function create()
     {
         //
+        $data_pengawasan=Pengawasan::all();
+        $pagename='Form Input Pengawasan';
+        return view('admin.pengawasan.create', compact('pagename','data_pengawasan'));
     }
 
     /**
@@ -40,6 +43,43 @@ class PengawasanController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'textpekerjaan'=>'required',
+            'textpelaksana_pekerjaan'=>'required',
+            'textno_kontrak'=>'required',
+            'texttanggal_pekerjaan'=>'required',
+            'textlokasi_pekerjaan'=>'required',
+            'textpengawas_pln'=>'required',
+            'textpengawas_vendor'=>'required',
+            'textjml_petugas_pelaksana'=>'required',
+            'textsop'=>'required',
+            'textIBPR'=>'required',
+            'textJSA'=>'required',
+            'textworking_permit'=>'required',
+            'textarahan_pekerja'=>'required',
+            'textcek_komunikasi'=>'required',
+            
+        ]);
+
+        $data_pengawasan=new Pengawasan([
+            'pekerjaan'=> $request->get('textpekerjaan'),
+            'pelaksana_pekerjaan'=> $request->get('textpelaksana_pekerjaan'),
+            'no_kontrak'=> $request->get('textno_kontrak'),
+            'tanggal_pekerjaan'=> $request->get('texttanggal_pekerjaan'),
+            'lokasi_pekerjaan'=> $request->get('textlokasi_pekerjaan'),
+            'pengawas_pln'=> $request->get('textpengawas_pln'),
+            'pengawas_vendor'=> $request->get('textpengawas_vendor'),
+            'jml_petugas_pelaksanan'=> $request->get('textjml_petugas_pelaksana'),
+            'sop'=> $request->get('textssop'),
+            'IBPR'=> $request->get('textIBPR'),
+            'JSA'=> $request->get('textJSA'),
+            'working_permit'=> $request->get('textworking_permit'),
+            'arahan_pekerja'=> $request->get('textarahan_pekerja'),
+            'cek_komunikasi'=> $request->get('textcek_komunikasi'),
+        ]);
+
+        $data_pengawasan->save();
+        return redirect('admin/pengawasan')->with('sukses','akun berhasil disimpan');
     }
 
     /**
