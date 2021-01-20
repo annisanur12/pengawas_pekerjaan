@@ -29,3 +29,12 @@ Route::group(['prefix' => 'pengawasan'], function () {
         Route::post('hapus', 'API\Pengawasan\PengawasanController@destroy');
     });
 });
+
+Route::group(['prefix' => 'peralatanPenunjang'], function () {
+    Route::group(['middleware' => ['auth:api']], function () {
+        Route::get('get_all', 'API\PeralatanPenunjang\PeralatanPenunjangController@getAll');
+        Route::post('tambah', 'API\PeralatanPenunjang\PeralatanPenunjangController@store');
+        Route::post('update', 'API\PeralatanPenunjang\PeralatanPenunjangController@update');
+        Route::post('hapus', 'API\PeralatanPenunjang\PeralatanPenunjangController@destroy');
+    });
+});
