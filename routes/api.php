@@ -20,3 +20,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('register','API\Auth\AuthController@register');
 Route::post('login','API\Auth\AuthController@login');
+
+Route::group(['prefix' => 'pengawasan'], function () {
+    Route::group(['middleware' => ['auth:api']], function () {
+        Route::get('get_all', 'API\Pengawasan\PengawasanController@getAll');
+        Route::post('tambah', 'API\Pengawasan\PengawasanController@store');
+        Route::post('update', 'API\Pengawasan\PengawasanController@update');
+        Route::post('hapus', 'API\Pengawasan\PengawasanController@destroy');
+    });
+});
